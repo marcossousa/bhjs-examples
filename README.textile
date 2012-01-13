@@ -1,0 +1,9 @@
+h1. Examples from Beagájs
+All the code from this project was presented at Beagájs 2012 (http://www.bhjs.com.br/).
+
+h2. How to setup application
+
+Just put the javascript at your project and import them in the HTML pages.
+
+h2. About
+More info: Beagájs 2012 (http://www.bhjs.com.br/).
