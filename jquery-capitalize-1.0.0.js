@@ -5,7 +5,7 @@
 * Version: 1.0.0
 * Release: 2012-01-12
 */
-; (function($, document, window, undefined) {
+; (function($, window, document, undefined) {
     
     var methods = { 
         init : function(options) {
@@ -49,4 +49,4 @@
         }
     };
 
-})(jQuery);
+})(jQuery, window, document);
