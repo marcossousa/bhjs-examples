@@ -7,46 +7,25 @@
 */
 ; (function($, window, document, undefined) {
     
-    var methods = { 
-        init : function(options) {
-            
-            var defaults = {
-                forceLowerCase: false
-            };
-
-            var options = $.extend(defaults, options);
-            
-            return this.each(function() {
-                var obj = $(this);
-                var text = obj.text();
-                
-                obj.data('capitalize', text);
-                
-                if (options.forceLowerCase) {
-                    text = text.toLowerCase();
-                }
-                text = text.charAt(0).toUpperCase() + text.slice(1);
-                obj.text(text);
-            });
+    $.widget( "marcossousa.capitalize" , {
+        options: {
+            forceLowerCase: false
         },
-        restore : function() {
-            return this.each(function() {
-                var obj = $(this);
-                var text = obj.data('capitalize');
-                obj.text(text);
-            });
-        }
-    }
-    
-    $.fn.capitalize = function(method) {
-        if(methods[method]) {
-            options = Array.prototype.slice.call(arguments, 1);
-            return methods[method].apply(this, options);
-        } else if ( typeof method == "object") {
-            return methods.init.apply(this, arguments);
-        } else {
-            $.error("The method" + method + " doens't exist");
-        }
-    };
-
+        _init : function() {
+            var obj = this.element;
+            var text = obj.text();
+            
+            this.originalText = text;
+            
+            if (this.options.forceLowerCase) {
+                text = text.toLowerCase();
+            }
+            text = text.charAt(0).toUpperCase() + text.slice(1);
+            obj.text(text);
+        },
+        restore: function( event ) {
+            var obj = this.element;
+            obj.text(this.originalText);
+        },
+    });
 })(jQuery, window, document);
